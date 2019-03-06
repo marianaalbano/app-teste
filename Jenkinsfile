@@ -1,17 +1,16 @@
 def remote = [:]
 remote.name = "node"
 remote.host = "64.137.162.12"
+remote.user = 'root'
+remote.password = 'Mudar@123'
 remote.allowAnyHosts = true
 
 node {
  	// Clean workspace before doing anything
-    withCredentials([usernamePassword(credentialsId: 'sshUserAcct', passwordVariable: 'Mudar@123', usernameVariable: 'root')]) {
-    remote.user = userName
-    remote.password = password
 
     try {
         stage ('Clone') {
-        	sshCommand remote: remote, command: '> teste.txt'
+        	sshCommand remote: remote, command: 'git clone'
         }
         stage ('Build') {
         	sh "echo 'shell scripts to build project...'"
