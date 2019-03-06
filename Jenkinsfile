@@ -1,10 +1,17 @@
+def remote = [:]
+remote.name = "node"
+remote.host = "64.137.162.12"
+remote.allowAnyHosts = true
+
 node {
  	// Clean workspace before doing anything
-    deleteDir()
+    withCredentials([usernamePassword(credentialsId: 'sshUserAcct', passwordVariable: 'Mudar@123', usernameVariable: 'root')]) {
+    remote.user = userName
+    remote.password = password
 
     try {
         stage ('Clone') {
-        	checkout scm
+        	sshCommand remote: remote, command: '> teste.txt'
         }
         stage ('Build') {
         	sh "echo 'shell scripts to build project...'"
