@@ -10,7 +10,7 @@ node {
 
     try {
         stage ('Clone') {
-        	sshCommand remote: remote, command: 'git clone'
+        	sshCommand remote: remote, command: '> /tmp/teste.txt'
         }
         stage ('Build') {
         	sh "echo 'shell scripts to build project...'"
