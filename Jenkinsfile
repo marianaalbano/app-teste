@@ -17,7 +17,7 @@ node {
         }
       	stage ('Deploy') {
             sh "echo 'shell scripts to deploy to server...'"
-            sshCommand remote: remote, command: "docker run -itd --name teste scripts:${BUILD_NUMBER} ."
+            sshCommand remote: remote, command: "docker run -itd --name teste scripts:${BUILD_NUMBER}"
       	}
     } catch (err) {
         currentBuild.result = 'FAILED'
