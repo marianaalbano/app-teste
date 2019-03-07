@@ -30,6 +30,7 @@ node {
 	        'integration': {
 	            sh "echo 'shell scripts to run integration tests...'"
 	        }
+        }
       	stage ('Deploy') {
             sh "echo 'shell scripts to deploy to server...'"
             sshCommand remote: remote, command: "docker run -itd --name teste scripts:${BUILD_NUMBER}"
