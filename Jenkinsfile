@@ -7,9 +7,10 @@ remote.allowAnyHosts = true
 
 node {
  	// Clean workspace before doing anything
-     sshCommand remote: remote, command: "cd /tmp && rm -rf app-teste/"
-     sshCommand remote: remote, command: "docker rm -f teste"
-
+     stage ('Clean workspace') {
+        sshCommand remote: remote, command: "cd /tmp && rm -rf app-teste/"
+        sshCommand remote: remote, command: "docker rm -f teste"
+     }
     try {
         stage ('Clone') {
         	sshCommand remote: remote, command: "cd /tmp && git clone git@github.com:marianaalbano/app-teste.git"
